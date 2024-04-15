@@ -31,7 +31,7 @@ var userSchema = new Schema({
 var User = _mongoose["default"].model('User', userSchema);
 function getTotalScore(scores) {
   var total = 0;
-  for (var i = 0; i < scores.length; i++) {
+  for (var i = 0; i < scores.length - 1; i++) {
     total = total + scores[i];
   }
   scores.push(total);
@@ -40,6 +40,7 @@ function getAllUsersScore(users) {
   var total = 0;
   for (var i = 0; i < users.length; i++) {
     total = total + users[i].scores[users[i].scores.length - 1];
+    console.log(total);
   }
   users.totalScores = total;
 }
@@ -60,6 +61,24 @@ User.getAllUsers = function () {
       }
       getAllUsersScore(users);
       resolve(users);
+    })["catch"](function (err) {
+      reject(err);
+    });
+  });
+};
+User.updateScores = function (userData) {
+  return new _bluebird["default"](function (resolve, reject) {
+    var totalScore = 0;
+    for (var i = 0; i < userData.scores.length - 1; i++) {
+      totalScore = totalScore + parseFloat(userData.scores[i]);
+    }
+    userData.scores[userData.scores.length - 1] = totalScore;
+    User.updateOne({
+      _id: userData.id
+    }, {
+      scores: userData.scores
+    }).then(function () {
+      resolve("Updated");
     })["catch"](function (err) {
       reject(err);
     });

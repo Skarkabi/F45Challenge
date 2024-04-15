@@ -29,5 +29,26 @@ router.get('/', (req, res, next) => {
 
 });
 
+router.post('/', (req,res,next) => {
+    console.log(req.body)
+    const newUser = {
+        firstName: req.body.name,
+        lastName: "Tester",
+        team: req.body.team
+    }
+    User.addUser(newUser).then(() => {
+        res.redirect("/");
+    })
+})
+
+router.post('/update', async (req,res,next) => {
+    console.log("THIS ONE")
+    console.log(req.body)
+    for(let i = 0; i < req.body.userScores.length; i++){
+        await User.updateScores(req.body.userScores[i])
+    }
+   res.redirect("/");
+})
+
 export default router;
 

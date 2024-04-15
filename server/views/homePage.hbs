@@ -70,17 +70,18 @@
   opacity: 1;
 }
     </style>
-
+<form method="POST">
     <body style="padding: 50px;">
         <div class ="row">
             <div class="col">
                 <table
                 class="table table-hover" 
-                data-toggle="table" 
                 data-search="true" 
-                id="mytab1" >
+                id="mytab1"
+                name="scoreTable" >
                     <thead>
                       <tr>
+                        <th scope="col" style="display:none;">ids</th>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Team</th>
@@ -97,7 +98,7 @@
                         <th scope="col">Total {{totalScores}}</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table">
                         {{#each users}}
                             {{#ifEquals this.team "Blue"}}
                             <tr style="background-color: lightskyblue">
@@ -105,54 +106,107 @@
                             {{#ifEquals this.team "Red"}}
                             <tr style="background-color: lightcoral">
                             {{/ifEquals}}
+                                <td style="display:none;" contenteditable="false">{{this._id}}</td>
                                 <td>{{counter @index}}</td>
                                 <td>{{this.firstName}} {{this.lastName}}</td>
                                 <td>{{this.team}}</td>
-                                <td>{{this.scores.[0]}}</td>
-                                <td>{{this.scores.[1]}}</td>
-                                <td>{{this.scores.[2]}}</td>
-                                <td>{{this.scores.[3]}}</td>
-                                <td>{{this.scores.[4]}}</td>
-                                <td>{{this.scores.[5]}}</td>
-                                <td>{{this.scores.[6]}}</td>
-                                <td>{{this.scores.[7]}}</td>
-                                <td>{{this.scores.[8]}}</td>
-                                <td>{{this.scores.[9]}}</td>
-                                <td>{{this.scores.[10]}}</td>
+                                <td class="firstScore" contenteditable="true">{{this.scores.[0]}}</td>
+                                <td contenteditable="true">{{this.scores.[1]}}</td>
+                                <td contenteditable="true">{{this.scores.[2]}}</td>
+                                <td contenteditable="true">{{this.scores.[3]}}</td>
+                                <td contenteditable="true">{{this.scores.[4]}}</td>
+                                <td contenteditable="true">{{this.scores.[5]}}</td>
+                                <td contenteditable="true">{{this.scores.[6]}}</td>
+                                <td contenteditable="true">{{this.scores.[7]}}</td>
+                                <td contenteditable="true">{{this.scores.[8]}}</td>
+                                <td contenteditable="true">{{this.scores.[9]}}</td>
+                                <td contenteditable="true">{{this.scores.[10]}}</td>
                             </tr>
                         {{/each}}
                     </tbody>
                   </table>
                   <div class="form-popup" id="myForm">
-                    <form action="/action_page.php" class="form-container">
                         <h1>Member Details</h1>
                         
                         <div class="form-group col-md-4">
                             <label for="name"><b>Name</b></label>
-                            <input type="text" placeholder="Enter Name" id="name" name="name" required>
+                            <input type="text" placeholder="Enter Name" id="name" name="name">
                         </div>
                       
                         <div class="form-group col-md-4">
                             <label for="inputTeam">Select Team</label>
-                            <select id="inputTeam" class="form-control">
+                            <select id="inputTeam" class="form-control" name="team">
                               <option>Blue</option>
                               <option>Red</option>
                             </select>
                         </div>
-                      <button type="button" id="confirmButton" class="btn">Confirm</button>
+                      <button type="submit" id="confirmButton" class="btn">Confirm</button>
                       <button type="button" id="closeButton" class="btn cancel">Close</button>
-                    </form>
                   </div>
             </div>
         </div>
         <div class="row" style="padding-top:10px">
             <div class="col">
+                <button type="submit" class="btn btn-primary" id="editButton">Edit Scores</button>
                 <button type="button" class="btn btn-primary" id="addButton">Add Member</button>
             </div>
         </div>
     </body>
-
+</form>
     <script>
+
+        $("#confirmButton").click(function() {
+            $(this).closest("form").attr("action", "/");     
+        });
+
+        function getTableData(){
+            var t = document.getElementById("table"),
+            tableRows = t.getElementsByTagName("tr"),
+            r = [], i, len, tds, j, jlen;
+
+            for ( i =0, len = tableRows.length; i<len; i++) {
+                tds = tableRows[i].getElementsByTagName('td');
+                var userId = ""
+                var scores = []
+                for( j = 0, jlen = tds.length; j < jlen; j++) {
+                    if(tds[j].getAttribute('contenteditable')){
+                        if(tds[j].getAttribute('contenteditable') === 'false'){
+                           userId = tds[j].innerHTML
+                        }else{
+                            scores.push(tds[j].innerHTML)
+                        }
+                    }
+                }
+                r.push({id: userId, scores: scores});
+                
+            }
+            return r
+        }
+
+    $("#editButton").click(function(e){
+            e.preventDefault();
+            var postData = 
+                { 
+                    userScores: (getTableData())
+                };                
+               
+            $.ajax({
+                url: "/update",
+                type : "POST",
+                data : postData,
+                success: function (data) {
+                    window.location = "/";
+                    
+                },
+
+                error: function () {
+                    window.location = "/";   
+                
+                }
+
+            });
+
+        })
         $("#addButton").click(function () { 
             $('#myForm').css({'display':'block'})
             /*
@@ -170,22 +224,6 @@
             updateScore()
             */
         }); 
-
-        $("#confirmButton").click(function () {
-            alert($('#inputTeam').val())
-            markup = 
-                "<tr>" +
-                "<th scope=row>2</th>" +
-                "<td>"+$('#name').val() + "</td>" +
-                "<td>"+ $('#inputTeam').val()+ "</td>" +
-                "<td><a contenteditable>34</a></td>" +
-                "<td><a contenteditable>42.1</a></td>" +
-                "<td></td>" +
-                "</tr>" 
-                tableBody = $("table tbody"); 
-                tableBody.append(markup); 
-            updateScore()
-        })
 
         $("#closeButton").click(function() {
             $('#myForm').css({'display':'none'})

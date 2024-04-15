@@ -38,7 +38,7 @@ const User = mongoose.model('User', userSchema);
 
 function getTotalScore(scores){
     let total = 0;
-    for(let i = 0; i < scores.length; i++){
+    for(let i = 0; i < scores.length - 1; i++){
         total = total + scores[i]
     }
     scores.push(total);
@@ -48,6 +48,7 @@ function getAllUsersScore(users){
     let total = 0;
     for(let i = 0; i < users.length; i++){
         total = total + users[i].scores[users[i].scores.length - 1]
+        console.log(total)
     }
     users.totalScores = total
 }
@@ -69,6 +70,21 @@ User.getAllUsers = () => {
             }
             getAllUsersScore(users);
             resolve(users);
+        }).catch(err => {
+            reject(err);
+        })
+    })
+}
+
+User.updateScores = userData => {
+    return new Bluebird((resolve, reject) => {
+        let totalScore = 0
+        for(let i = 0; i < userData.scores.length - 1; i++){
+            totalScore = totalScore + parseFloat(userData.scores[i])
+        }
+        userData.scores[userData.scores.length - 1] = totalScore
+        User.updateOne({_id: userData.id}, {scores: userData.scores}).then(() => {
+            resolve("Updated")
         }).catch(err => {
             reject(err);
         })
