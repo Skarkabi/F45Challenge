@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+div{
+  font-family: 'Oxygen', sans-serif;
+
+}
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.notifications {
+  width: auto;
+  height: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 63px;
+  right: 62px;
+  border-radius: 5px 0px 5px 5px;
+  background-color: #222222;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+#box {
+  background-color: #222222;
+}
+
+#notifications h2 {
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid #000000;
+  color: #eee
+}
+
+.notifications-item .text p {
+  color: #eee;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px
+}
+
+#userInfoNav {
+  color: #fff
+}
+.notifications-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 6px 9px;
+  margin-bottom: 0px;
+}
+
+.fa-stack{
+  cursor: pointer
+}
+
+.fa-stack:hover > .far.fa-bell.fa-lg.fa-stack-1x{
+  color: lightskyblue;
+}
+.far.fa-bell.fa-lg.fa-stack-1x{
+  position: relative;
+  display: inline-block;
+  border: none;
+  font-size: 1.4em;
+  color: #fff
+
+}
+
+#content {
+  width: 100%;
+}
+
+.fas.fa-certificate.fa-xs.fa-stack-1x{
+  position: absolute;
+  color: darkorange;
+  font-size: .7em;
+  bottom: 1em;
+  left: .7em;
+
+}
+
+a {
+  text-decoration: none !important;
+}
+#Actual {
+    color: White;
+    padding: 20px;
+}
+.slideup, .slidedown {
+    max-height: 0;            
+    overflow-y: hidden;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+}
+.slidedown {            
+    max-height: 1000px ;                    
+}    
+
+.small, small {
+  font-size: 90%;
+  font-weight: 400;
+}
+
+.form-group.required label:after {
+  content: "*";
+  color: #510101;
+  margin-left: 0.1rem;
+}
+
+/* Font awesome */
+i {
+  font-size: 80%;
+  margin-right: 0.3rem;
+}
+
+i.far.fa-save {
+  font-size: 90%;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+  margin-bottom: 2rem;
+}
+
+.bg-white-box {
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+.p-7 {
+  padding: 5rem 3rem;
+}
+
+section#login {
+  padding: 8rem;
+}
+
+.registration-errors {
+  margin-top: 1rem;
+}
+
+/* Junmbotron - Page headers */
+.jumbotron {
+  background: none;
+  padding: 0px;
+}
+.display-4 {
+  font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+  margin-bottom: 2rem;
+  min-width: 10px;
+  max-width: 100%;
+  color: #fff;
+  background-color: #222222;
+}
+
+.navbar-light .navbar-brand {
+  color: rgb(8 22 216 / 90%);
+  font-weight: 900;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: absolute;
+  margin-top: 9px;
+  padding: 0px;
+  border-radius: 0px;
+  border: 1px solid #eaeaea;
+  border-top: none;
+}
+
+.dropdown-item {
+  border: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  transition:all 0.3s;
+  padding: 5%
+  
+}
+
+#stockDeficit {
+  border: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  transition:all 0.3s;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+#navbarSupportedContent {
+  transition: all 0.3s;
+}
+
+/* Filterable table */
+
+td.table-actions {
+  text-align: center;
+  
+}
+
+
+td.table-actions > a {
+  padding: 6px;
+  text-align: center;
+  align-items: center;
+  
+}
+
+.table-buttons {
+  margin-bottom: 2rem;
+}
+
+.table-custom-strip > tbody > tr:nth-child(odd) {
+  background-color: #F0F0F0	;
+  }
+
+/* Course instance page */
+.course-section-wrapper, .section-wrapper {
+  margin-bottom: 2rem;
+}
+
+.course-section-wrapper > .section-content > .course-content {
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.course-section-wrapper > .section-title > h4 {
+  font-weight: 700;
+}
+
+h5.card-title {
+  font-weight: 700;
+}
+
+/* assignment submission */
+.submission-description {
+  margin-bottom: 2rem;
+}
+
+/* dashboard */
+.card-text-logo {
+  height: 180px;
+  text-align: center;
+  background: green;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 30% 0%;
+}
+.dashboard-list {
+  height: 90px;
+}
+/* Jumbotron */
+.lead {
+  padding: 30%, 0%;
+  font-size: 1rem;
+}
+
+/* Display individual user */
+.display-user > .form-control:disabled,
+.display-user > .form-control[readonly] {
+  background-color: white !important;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 0;
+  padding-left: 0px;
+}
+
+.display-user > label {
+  color: #737373;
+  font-weight: 300;
+  font-size: 90%;
+}
+
+table {
+  table-layout:auto;
+  border-collapse: collapse;
+  text-size-adjust: auto;
+  font-size: 0.86vw;
+  word-wrap:break-word;
+  text-align: center;
+  width: 30%
+}
+
+table, tr, td, th {
+  border: 1px solid black;
+  text-align:center;
+  white-space: normal;
+  text-overflow: ellipsis;
+  
+}
+
+td:empty:after {
+  content: "\00a0"; /* HTML entity of &nbsp; */
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+#sidebar {
+  background: #BF2B45;
+  color: #BF2B45;
+  min-width:200px;
+  max-width: 200px;
+  min-height: 100vh;
+  color: #fff;
+  transition: all 0.3s;
+  margin-left: -200px;
+
+
+}
+
+#sidebarHeader {
+  padding-left: 5%;
+}
+
+#sidebarHeader h3:hover {
+  cursor: pointer;
+}
+
+#sidebar.active {
+  margin-left: 0;
+}
+
+#sidebar a {
+  color: #fff;
+  background: #BF2B45;
+  width: 100%;
+  text-align: left;
+  padding: 10%;
+}
+
+#sidebar ul{
+  margin: 0%;
+  padding: 0%;
+}
+
+
+#sidebar ul li{
+  color: #fff;
+  background: #222222;
+  padding:5%;
+  display: flex;
+  overflow: auto;
+  transition: all 0.3s;
+}
+
+#sidebar a[aria-expanded="false"]{
+  background-color: #BF2B45;
+  color: #fff;
+  padding:10%
+}
+
+#sidebar ul li a{
+  font-size: auto;
+  text-align:left;
+  text-decoration: none;
+  background: #222222;
+  gap: 10px;
+
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+
+.dropdown-toggle::after {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+#sidebar a:hover {
+  color: #222222;
+  background: #fff;
+}
+
+#sidebar ul li:hover {
+  color: #222222;
+  background: #fff;
+}
+
+#sidebar ul li:hover >  a {
+  color: #222222;
+  background: #fff;
+}
+
+#sidebarCollapse {
+  color: #fff;
+}
+
+
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -200px;
+  }
+  #sidebar.active {
+      margin-left: 0;
+  }
+}
+
+#vehcileMaintenanceValue {
+  color: blue;
+  font-weight: bold;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a, a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+
+ 
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #222222;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {transform: scale(0, 0); opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen saize */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
