@@ -3,16 +3,16 @@ import Bluebird from 'bluebird';
 
 const Schema = mongoose.Schema;
 const dates = [
-    34,
-    54,
-    35,
-    65,
-    34,
-    65,
-    23,
-    54,
-    34,
-    23
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
 ]
 const userSchema = new Schema({
     firstName: {

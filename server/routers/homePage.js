@@ -33,7 +33,7 @@ router.post('/', (req,res,next) => {
     console.log(req.body)
     const newUser = {
         firstName: req.body.name,
-        lastName: "Tester",
+        lastName: req.body.lname,
         team: req.body.team
     }
     User.addUser(newUser).then(() => {

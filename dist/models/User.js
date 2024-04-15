@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _mongoose = _interopRequireDefault(require("mongoose"));
 var _bluebird = _interopRequireDefault(require("bluebird"));
 var Schema = _mongoose["default"].Schema;
-var dates = [34, 54, 35, 65, 34, 65, 23, 54, 34, 23];
+var dates = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var userSchema = new Schema({
   firstName: {
     type: String,

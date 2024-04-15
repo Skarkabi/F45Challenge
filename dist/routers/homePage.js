@@ -36,7 +36,7 @@ router.post('/', function (req, res, next) {
   console.log(req.body);
   var newUser = {
     firstName: req.body.name,
-    lastName: "Tester",
+    lastName: req.body.lname,
     team: req.body.team
   };
   _User["default"].addUser(newUser).then(function () {
